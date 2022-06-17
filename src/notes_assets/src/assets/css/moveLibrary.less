@@ -1,0 +1,333 @@
+
+html{
+    width: 100%;
+    height: 100%;
+
+    body{
+        width: 100%;
+        height: 100%;
+    }   
+
+    #app{
+        height: 100%;
+    }
+}
+
+.mt10 {
+    .margin-top(10);
+}
+
+.mt15 {
+    .margin-top(15);
+}
+
+// flex
+.flex() {
+    display: flex;
+}
+
+// none
+.none() {
+    display: none;
+}
+
+// 宽度
+.width(@value) {
+    width: (@value*2/75rem);
+}
+
+// 宽度百分比
+.widthP(@value) {
+    width: (@value);
+}
+
+// 最小宽度
+.min-width(@value) {
+    min-width: (@value*2/75rem);
+}
+
+// 最大宽度
+.max-width(@value) {
+    max-width: (@value*2/75rem);
+}
+
+// 高度
+.height(@value) {
+    height: (@value*2/75rem);
+}
+
+// 最小高度
+.minHeight(@value) {
+    min-height: (@value*2/75rem);
+}
+
+// 文字大小
+.font-size(@value) {
+    font-size: (@value*2/75rem);
+}
+
+// 行间距
+.line-height(@value) {
+    line-height: (@value*2/75rem);
+}
+
+// 颜色
+.color(@value) {
+    color: @value;
+}
+
+// 缩放
+.scale(@value) {
+    transform: scale(@value);
+}
+
+// 垂直居中
+.aCenter() {
+    align-items: center;
+}
+
+// 水平居中
+.jCenter() {
+    justify-content: center;
+}
+
+// 排序方式
+.column() {
+    flex-direction: column;
+}
+
+// 阴影
+.shadow(@x, @y, @h, @color) {
+    box-shadow: @x @y @h @color
+}
+
+// 圆角
+.radius(@value) {
+    border-radius: (@value*2/75rem);
+}
+
+// 圆形
+.circular() {
+    border-radius: 50%;
+}
+
+// 背景色
+.background(@value) {
+    background: @value no-repeat;
+}
+
+// 背景大小
+.background-size(@width, @height) {
+    background-size: (@width*2/75rem) (@height*2/75rem);
+}
+
+// 背景色
+.transition(@value) {
+    transition: @value;
+}
+
+// 定位的上下左右间距
+.top(@value: 0) {
+    top: (@value*2/75rem);
+}
+
+.bottom(@value: 0) {
+    bottom: (@value*2/75rem);
+}
+
+.left(@value: 0) {
+    left: (@value*2/75rem);
+}
+
+.right(@value: 0) {
+    right: (@value*2/75rem);
+}
+
+// 边框
+.border(@width: 1px, @color: #ccc) {
+    border: @width solid @color;box-sizing: border-box;
+}
+
+.border-top(@width: 1px, @color: #ccc) {
+    border-top: @width solid @color;box-sizing: border-box;
+}
+
+.border-bottom(@width: 1px, @color: #ccc) {
+    border-bottom: @width solid @color;box-sizing: border-box;
+}
+
+.border-left(@width: 1px, @color: #ccc) {
+    border-left: @width solid @color;box-sizing: border-box;
+}
+
+.border-right(@width: 1px, @color: #ccc) {
+    border-right: @width solid @color;box-sizing: border-box;
+}
+
+// flex垂直水平绝对居中
+.center() {
+    .aCenter();
+    .jCenter();
+}
+
+// 透明度
+.opacity(@value) {
+    opacity: @value
+}
+
+// 内外边距
+.margin-left(@value) {
+    margin-left: (@value*2/75rem);
+}
+
+.margin-right(@value) {
+    margin-right: (@value*2/75rem);
+}
+
+.margin-top(@value) {
+    margin-top: (@value*2/75rem);
+}
+
+.margin-bottom(@value) {
+    margin-bottom: (@value*2/75rem);
+}
+
+.padding-left(@value) {
+    padding-left: (@value*2/75rem);
+}
+
+.padding-right(@value) {
+    padding-right: (@value*2/75rem);
+}
+
+.padding-top(@value) {
+    padding-top: (@value*2/75rem);
+}
+
+.padding-bottom(@value) {
+    padding-bottom: (@value*2/75rem);
+}
+
+// input placeholder
+.placeholder(@value: #999999) {
+    ::-webkit-input-placeholder {color: @value;}
+
+    :-moz-placeholder {color: @value;}
+
+    ::-moz-placeholder {color: @value;}
+
+    :-ms-input-placeholder {color: @value;}
+}
+
+// 渐变
+.gradient(@direction, @rgbaTop, @rgbaDown) {
+    background: linear-gradient(@direction, @rgbaTop, @rgbaDown);
+}
+
+/**
+ * 外边距
+ * @top         上边距
+ * @right       右边距
+ * @bottom      下边距
+ * @left        左边距
+ */
+.margin(@top, @right, @bottom, @left) {
+    margin: (@top*2/75rem) (@right*2/75rem) (@bottom*2/75rem) (@left*2/75rem);
+}
+
+/**
+ * 内边距
+ * @top         上边距
+ * @right       右边距
+ * @bottom      下边距
+ * @left        左边距
+ */
+.padding(@top, @right, @bottom, @left) {
+    padding: (@top*2/75rem) (@right*2/75rem) (@bottom*2/75rem) (@left*2/75rem);
+}
+
+/**
+ * 圆角单独设置
+ * @top         上边距
+ * @right       右边距
+ * @bottom      下边距
+ * @left        左边距
+ */
+.border-radius(@top, @right, @bottom, @left) {
+    border-radius: (@top*2/75rem) (@right*2/75rem) (@bottom*2/75rem) (@left*2/75rem);
+}
+
+// 宽高百分百
+.wh100() {
+    width: 100%;height: 100%;
+}
+
+/**
+ * svg
+ * @width           svg宽度
+ * @height          svg高度
+ * @margin-right    svg居右边距
+ * @margin-left     svg居左边距
+ * #Dom
+ <i class="svg"><img src="./svg/menu.svg" alt=""></i>
+ */
+.svg(@width: 16, @height: 16, @margin-right: 15, @margin-left: 15) {
+    > i.svg {
+        .flex();.center();.width(@width);.height(@height);.margin(0, @margin-right, 0, @margin-left);
+
+        img {
+            .wh100();
+        }
+    }
+}
+
+/**
+ * 文字样式
+ * @font-size           文字大小
+ * @line-height         行高
+ * @color               文字颜色
+ * @scale               文字缩放 解决浏览器文字禁止小于12px限制
+ */
+.text(@font-size: 14, @line-height: 14, @color: #333, @scale: 1) {
+    .font-size(@font-size);
+    .line-height(@line-height);
+    .color(@color);
+    .scale(@scale);
+}
+
+// 超出隐藏
+.ellipsis() {
+    overflow: hidden;text-overflow: ellipsis;white-space: nowrap;
+}
+
+.ellipsisMore(@value:2) {
+    overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: @value;
+}
+
+// 间隔
+.division(@height, @color) {
+    &.division {
+        .flex();.height(@height);.background(@color);width: 100%;
+    }
+}
+
+// 移动端0.5像素分割线 向上
+.lineTop(@value: #E8E8E8) {
+    &:before {
+        display: block; content: ''; position: absolute; left: -50%; top: 0; width: 200%; pointer-events: none;height: 1px;.background(@value);.scale(0.5);
+    }
+}
+
+// 移动端0.5像素分割线 向下
+.lineBottom(@value: #E8E8E8) {
+    &:before {
+        display: block; content: ''; position: absolute; left: -50%; bottom: 0; width: 200%; pointer-events: none;height: 1px;.background(@value);.scale(0.5);
+    }
+}
+
+// 隐藏分割线
+.lineNone() {
+    &:before {
+        display: none;
+    }
+}

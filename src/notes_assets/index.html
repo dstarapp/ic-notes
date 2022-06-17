@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html translate="no">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="google" content="notranslate" />
+  <meta http-equiv="Content-Language" content="en-US,zh-CN" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- <meta name="viewport" content="width=device-width,initial-scale=1.0" /> -->
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+  <meta name="referrer" content="no-referrer" />
+  <link rel="icon" href="/favicon.ico" />
+  <title>A Note Is Forever - Dstar Note</title>
+</head>
+
+<body>
+  <noscript>
+    <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
+        Please enable it to continue.</strong>
+  </noscript>
+  <div id="app"></div>
+  <script type="module">
+    /**
+     * @dfinity/agent requires this. Can be removed once it's fixed
+     */
+    import { Buffer } from "buffer"
+
+    window.global = window
+    window.Buffer = Buffer
+  </script>
+  <script type="module" src="/src/main.ts"></script>
+  <!-- built files will be auto injected -->
+</body>
+
+</html>

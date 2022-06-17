@@ -1,0 +1,37 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "noImplicitAny": false,
+    "allowJs": true,
+    "jsx": "preserve",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    "types": [
+      "vite/client"
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "canisters/notes": [
+        ".dfx/local/canisters/notes"
+      ],
+      "canisters/notes_sync": [
+        ".dfx/local/canisters/notes_sync"
+      ]
+    }
+  },
+  "include": [
+    "src/notes_assets/**/*.ts",
+    "src/notes_assets/**/*.d.ts",
+    "src/notes_assets/**/*.tsx",
+    "src/notes_assets/**/*.vue",
+    "src/notes_assets/**/*.js"
+  ]
+}

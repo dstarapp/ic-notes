@@ -1,0 +1,44 @@
+{
+  "canisters": {
+    "notes": {
+      "main": "src/notes/main.mo",
+      "type": "motoko"
+    },
+    "notes_sync": {
+      "main": "src/notes_sync/main.mo",
+      "type": "motoko"
+    },
+    "notes_assets": {
+      "dependencies": [
+        "notes"
+      ],
+      "frontend": {
+        "entrypoint": "dist/notes_assets/index.html"
+      },
+      "source": [
+        "dist/notes_assets/"
+      ],
+      "type": "assets"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "dfx": "0.10.0",
+  "networks": {
+    "local": {
+      "bind": "127.0.0.1:8000",
+      "type": "ephemeral"
+    },
+    "maintest": {
+      "providers": [
+        "https://ic0.app"
+      ],
+      "type": "persistent"
+    }
+  },
+  "version": 1
+}

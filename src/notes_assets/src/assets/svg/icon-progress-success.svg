@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="56px" height="56px" viewBox="0 0 56 56" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <polygon id="path-1" points="39.7002638 21.9310048 36.6676047 18.7980041 24.3203501 31.3300068 18.4716505 25.511577 15.4389915 28.6445777 24.3203501 37.5960082"></polygon>
+        <filter x="-26.8%" y="-29.3%" width="153.6%" height="169.2%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.202032343 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(-644.000000, -553.000000)">
+            <g transform="translate(622.000000, 498.000000)">
+                <g transform="translate(22.055702, 55.000000)">
+                    <ellipse fill="#3C6DD8" cx="27.5696276" cy="27.6441237" rx="27.5696276" ry="27.6441237"></ellipse>
+                    <g >
+                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                        <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

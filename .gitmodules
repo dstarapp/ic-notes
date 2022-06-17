@@ -1,0 +1,3 @@
+[submodule "src/notes/ic-note"]
+	path = src/notes/ic-note
+	url = https://github.com/ic-dstar/ic-note.git
