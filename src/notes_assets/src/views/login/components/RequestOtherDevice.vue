@@ -180,7 +180,7 @@
       </div>
     </transition>
 
-    <div v-if="hasNote" class="initaccount" @click="accountInit = true">
+    <div v-if="!hasNote" class="initaccount" @click="accountInit = true">
       <svg class="icon" aria-hidden="true">
         <use xlink:href="#icon-care" />
       </svg>
