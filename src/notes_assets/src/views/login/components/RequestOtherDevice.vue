@@ -275,6 +275,7 @@ export default {
     showKeyPhrase() {
       this.options = 1;
       this.phrasedata = '';
+      this.isValidated = false;
     },
     syncing() {
       this.clickstatus = 1;

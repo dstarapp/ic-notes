@@ -795,6 +795,7 @@ export default {
     flex: 1;
     flex-direction: column;
     padding: 0 30px;
+    height: calc(100% - 36px);
 
     #notearea-toolbar {
       border: none;
@@ -940,6 +941,11 @@ export default {
     font-size: 14px;
     // height: 100%;
     font-family: 'Gothic';
+    max-height: calc(100% - 105px);
+
+    .ql-editor {
+      max-height: 100%;
+    }
   }
 }
 

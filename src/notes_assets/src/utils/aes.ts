@@ -23,7 +23,7 @@ const generateKey = () => {
   var salt = CryptoJS.lib.WordArray.random(128 / 8);
   let key = CryptoJS.PBKDF2(p, salt, { keySize: 512 / 32, iterations: 1000 });
   return key.toString();
-}
+};
 
 export const SeedAesKey = async (): Promise<boolean> => {
   let notes = GetNotesKey();
@@ -36,7 +36,7 @@ export const SeedAesKey = async (): Promise<boolean> => {
   try {
     let ret = await NotesSync().seed(notes.getPublickey(), _key);
     if (ret) {
-      UpdateCurrentLocalKey({ 'ak': _key })
+      UpdateCurrentLocalKey({ ak: _key });
     }
     console.log('SeedKey success');
     return ret;
@@ -44,7 +44,7 @@ export const SeedAesKey = async (): Promise<boolean> => {
     console.log(e);
   }
   return false;
-}
+};
 
 export const HasAesKey = (): boolean => {
   let data = GetCurrentLocalKey();
@@ -52,7 +52,7 @@ export const HasAesKey = (): boolean => {
     return false;
   }
   return true;
-}
+};
 
 export const CheckIsSeed = async (): Promise<boolean> => {
   let data = GetCurrentLocalKey();
@@ -61,7 +61,7 @@ export const CheckIsSeed = async (): Promise<boolean> => {
     return ret;
   }
   return true;
-}
+};
 
 export const CheckAesKey = async (): Promise<boolean> => {
   let notes = GetNotesKey();
@@ -84,7 +84,7 @@ export const CheckAesKey = async (): Promise<boolean> => {
   // console.log(str, AesDecrypt(str));
 
   return true;
-}
+};
 
 export const AesEncrypt = (str: string): string => {
   let notes = GetNotesKey();
@@ -93,13 +93,13 @@ export const AesEncrypt = (str: string): string => {
   }
   try {
     let key = notes.decrypt(_key);
-    let encrypted = (CryptoJS.AES.encrypt(str, key))
-    return encrypted.toString()
+    let encrypted = CryptoJS.AES.encrypt(str, key);
+    return encrypted.toString();
   } catch (e) {
-    console.log('AesEncrypt', e)
+    console.log('AesEncrypt', e);
   }
   return 'AesEncrypt error, It is not a true key';
-}
+};
 
 export const AesDecrypt = (str: string): string => {
   let notes = GetNotesKey();
@@ -111,32 +111,32 @@ export const AesDecrypt = (str: string): string => {
     let decrypt = CryptoJS.AES.decrypt(str, key);
     return decrypt.toString(CryptoJS.enc.Utf8);
   } catch (e) {
-    console.log('AesDecrypt', e)
+    console.log('AesDecrypt', e);
   }
   return 'AesDecrypt error, It is not a true key';
-}
+};
 
 export const AesShaEncrypt = (str: string, key: string): string => {
   try {
     key = CryptoJS.SHA3(key);
-    let encrypted = (CryptoJS.AES.encrypt(str, key.toString()))
-    return encrypted.toString()
+    let encrypted = CryptoJS.AES.encrypt(str, key.toString());
+    return encrypted.toString();
   } catch (e) {
-    console.log(e)
+    console.log(e);
   }
   return '';
-}
+};
 
 export const AesShaDecrypt = (str: string, key: string): string => {
   try {
     key = CryptoJS.SHA3(key);
-    let decrypt = (CryptoJS.AES.decrypt(str, key.toString()))
+    let decrypt = CryptoJS.AES.decrypt(str, key.toString());
     return decrypt.toString(CryptoJS.enc.Utf8);
   } catch (e) {
-    console.log(e)
+    console.log(e);
   }
   return '';
-}
+};
 
 export const GetAesKeyByPublicKey = (pkeyb64: string): string => {
   let notes = GetNotesKey();
@@ -147,11 +147,10 @@ export const GetAesKeyByPublicKey = (pkeyb64: string): string => {
     let key = notes.decrypt(_key);
     return EncryptByPublicKey(pkeyb64, key);
   } catch (e) {
-    console.log('AesDecrypt', e)
+    console.log('AesDecrypt', e);
   }
   return '';
-}
-
+};
 
 export const SubmitKeySync = async (pkeys: string[]): Promise<boolean> => {
   let notes = GetNotesKey();
@@ -164,13 +163,13 @@ export const SubmitKeySync = async (pkeys: string[]): Promise<boolean> => {
     if (text) {
       args.push([pk, text]);
     }
-  })
+  });
   if (args.length <= 0) {
     return false;
   }
-  await NotesSync().submit_ciphertexts(args)
+  await NotesSync().submit_ciphertexts(args);
   return true;
-}
+};
 
 export const SyncCurrentAesKey = async (): Promise<string> => {
   let notes = GetNotesKey();
@@ -179,16 +178,15 @@ export const SyncCurrentAesKey = async (): Promise<string> => {
   }
   let pkey = notes.getPublickey();
   let ret = await NotesSync().get_ciphertext(pkey);
-  console.log(ret)
   if (ret && ret.ok) {
-    UpdateCurrentLocalKey({ 'ak': ret.ok, 'bk': 1 });
+    UpdateCurrentLocalKey({ ak: ret.ok, bk: 1 });
     return 'success';
   } else if (ret && ret.err && ret.err.hasOwnProperty('notFound')) {
     DeleteCurrentLocalKey();
     return 'restart';
   }
   return 'wait';
-}
+};
 
 export const RemoveCurrentDevice = async (): Promise<boolean> => {
   let notes = GetNotesKey();
@@ -197,14 +195,14 @@ export const RemoveCurrentDevice = async (): Promise<boolean> => {
   }
   await RemoveDevice(notes.getAlias());
   return DeleteCurrentLocalKey();
-}
+};
 
 export const RegsiterCurrentDevice = async (alias: string): Promise<boolean> => {
-  let key = await CreateMnemonicKey(alias)
-  let agent = navigator.userAgent
+  let key = await CreateMnemonicKey(alias);
+  let agent = navigator.userAgent;
   try {
-    let ok = await NotesSync().register_device(alias, agent, key.getPublickey())
-    console.log('register_device', ok)
+    let ok = await NotesSync().register_device(alias, agent, key.getPublickey());
+    console.log('register_device', ok);
     if (!ok) {
       return false;
     }
@@ -213,31 +211,35 @@ export const RegsiterCurrentDevice = async (alias: string): Promise<boolean> => 
     return false;
   }
   return SaveDeviceMnemonicKey();
-}
+};
 
 //
 export const ImportMnemonicCheck = async (mn: string): Promise<boolean> => {
-  let key = await NotesMnemonicKey.fromMnemonic(mn, 'mnemonic_test')
-  let pkey = key.getPublickey()
+  let key = await NotesMnemonicKey.fromMnemonic(mn, 'mnemonic_test');
+  let pkey = key.getPublickey();
   let ret = await NotesSync().get_ciphertext(pkey);
   if (ret && ret.ok) {
-    UpdateCurrentLocalKey({ 'ak': ret.ok, 'bk': 1 });
-    return true
+    // UpdateCurrentLocalKey({ ak: ret.ok, bk: 1 });
+    return true;
   }
   return false;
-}
+};
 
 export const ImportMnemonicSave = async (mn: string, alias: string): Promise<boolean> => {
   let key = await ImportMnemonicKey(mn, alias);
-  let agent = navigator.userAgent
-  let ok = await NotesSync().register_device(alias, agent, key.getPublickey())
-  console.log('register_device', ok)
+  let agent = navigator.userAgent;
+  let ok = await NotesSync().register_device(alias, agent, key.getPublickey());
+  console.log('register_device', ok);
   if (ok) {
-    return SaveDeviceMnemonicKey();
+    let ret = await NotesSync().get_ciphertext(key.getPublickey());
+    if (ret && ret.ok) {
+      UpdateCurrentLocalKey({ ak: ret.ok, bk: 1 });
+      return SaveDeviceMnemonicKey();
+    }
   }
   // UpdateCurrentLocalKey({'ak': ak, 'bk': 1});
   return false;
-}
+};
 
 export const SetPassSecret = async (pass: string): Promise<boolean> => {
   let str = GetDeviceMnemonic();
@@ -248,14 +250,13 @@ export const SetPassSecret = async (pass: string): Promise<boolean> => {
     let secret = AesShaEncrypt(str, pass);
     let ok = await NotesSync().setSuperSecret(secret);
     if (ok) {
-
     }
     return ok;
   } catch (e) {
     console.log(e);
   }
   return false;
-}
+};
 
 export const GetPhraseByPass = async (pass: string): Promise<string> => {
   try {
@@ -268,4 +269,4 @@ export const GetPhraseByPass = async (pass: string): Promise<string> => {
     console.log(e);
   }
   return '';
-}
+};
