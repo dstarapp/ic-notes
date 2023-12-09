@@ -8,7 +8,7 @@
               <img src="../../assets/svg/loading.svg" v-show="isSave" />
               {{ isSave ? '' : isSaving == 2 ? $t('note.btnName.saved') : $t('note.btnName.save') }}
             </button>
-            <div class="autosave-down" @mouseenter="showAutoSave" @mouseleave="hideAutoSave">
+            <div class="autosave-down" @click.stop="toggleAutoSave">
               <div class="setautosave" ref="setautosave">
                 <span>{{ $t('note.btnName.autosave') }}</span>
                 <div class="switch-seconds">
@@ -497,12 +497,16 @@ export default {
         this.startAutoSave();
       }
     },
-    showAutoSave() {
-      this.$refs.setautosave.style.display = 'block';
+    toggleAutoSave() {
+      if (this.$refs.setautosave.style.display == 'block') {
+        this.$refs.setautosave.style.display = 'none';
+      } else {
+        this.$refs.setautosave.style.display = 'block';
+      }
     },
-    hideAutoSave() {
-      this.$refs.setautosave.style.display = 'none';
-    },
+    // hideAutoSave() {
+    //   this.$refs.setautosave.style.display = 'none';
+    // },
     editChange(data) {
       this.isEdit = data;
       this.$emit('editchange', data);

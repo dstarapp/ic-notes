@@ -12,7 +12,7 @@ export const PLANET_NFT_CANISTER_ID = 'slzze-ciaaa-aaaah-aa7ra-cai';
  * @return {import("@dfinity/agent").ActorSubclass<LedgerService>}
  */
 export const createActor = (options) => {
-  const agent = new HttpAgent({ ...{ host: 'https://boundary.ic0.app/' }, ...options?.agentOptions });
+  const agent = new HttpAgent({ ...{ host: 'https://ic0.app/' }, ...options?.agentOptions });
 
   // Fetch root key for certificate validation during development
   if (process.env.NODE_ENV !== 'production') {

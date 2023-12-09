@@ -45,9 +45,6 @@ const canisterDefinitions = Object.entries(canisterIds).reduce(
   {}
 );
 
-// Gets the port dfx is running on from dfx.json
-const DFX_PORT = dfxJson.networks.local.bind.split(':')[1];
-
 // See guide on how to configure Vite at:
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -99,7 +96,7 @@ export default defineConfig({
     proxy: {
       // This proxies all http requests made to /api to our running dfx instance
       '/api': {
-        target: `http://127.0.0.1:${DFX_PORT}`,
+        target: `http://127.0.0.1:4943`,
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '/api'),
       },
